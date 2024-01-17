@@ -2,7 +2,7 @@
 
 return [
 
-    // @TODO add description to paths
+    // enter your svg paths here
     'paths' => [
         // ...
     ],
