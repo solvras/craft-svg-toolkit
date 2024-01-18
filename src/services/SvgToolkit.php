@@ -58,7 +58,7 @@ class SvgToolkit extends Component
      * @return string
      * Replace all colors in single colored svg
      */
-    public function svgColor(Asset|string $asset, $color = 'currentColor'): string
+    public function svgColor(Asset|string $asset, string $color = 'currentColor'): string
     {
         if ($svg = Html::svg($asset, true, false)) {
             return $this->replaceAllColors($svg, $color);
@@ -70,15 +70,17 @@ class SvgToolkit extends Component
 
     /**
      * @param Asset|string $asset
-     * @param string $oldColor
-     * @param string $newColor
+     * @param array $replaceColor
      * @return string
-     * Replace specific color in multicolored svg
+     * Replace specific colors in multicolored svg
      */
-    public function svgReplaceColor(Asset|string $asset, $oldColor, $newColor): string
+    public function svgReplaceColor(Asset|string $asset, array $replaceColor): string
     {
         if ($svg = Html::svg($asset, true, false)) {
-            return $this->replaceSpecificColor($svg, $oldColor, $newColor);
+            foreach ($replaceColor as $oldColor => $newColor) {
+                $svg = $this->replaceSpecificColor($svg, $oldColor, $newColor);
+            }
+            return $svg;
         } else {
             // return red warning icon if not svg
             return $this->warningSvg();
@@ -136,8 +138,11 @@ class SvgToolkit extends Component
      * @return string
      * Replace all colors in single colored svg
      */
-    public function replaceAllColors(string $svg, string $color): string
+    public function replaceAllColors(string $svg, string|bool $color): string
     {
+        if($color === true) {
+            $color = 'currentColor';
+        }
         return preg_replace_callback('/(fill|stroke)="([0-9a-zA-Z()#]*)"/', function($matches) use ($color) {
             if ($matches[2] != 'none') {
                 return $matches[1] . '="' . $color . '"';
@@ -154,8 +159,11 @@ class SvgToolkit extends Component
      * @return string
      * Replace specific color in multicolored svg
      */
-    public function replaceSpecificColor(string $svg, $oldColor, $newColor): string
+    public function replaceSpecificColor(string $svg, string $oldColor, string|bool $newColor): string
     {
+        if($newColor === true) {
+            $newColor = 'currentColor';
+        }
         return preg_replace_callback('/(fill|stroke)="(' . $oldColor . ')"/', function($matches) use ($newColor) {
             if ($matches[2] != 'none') {
                 return $matches[1] . '="' . $newColor . '"';
