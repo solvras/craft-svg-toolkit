@@ -1,6 +1,10 @@
 # svg-toolkit
 
-This is a Craft CMS plugin that provides a set of tools for working with SVG files and improve accessibility.
+The `svg-toolkit` is a Craft CMS plugin that provides a set of tools for working with SVG files in Twig, with a focus on improving accessibility. It adds SVG as a separate asset type in the Craft CMS Asset field and allowing you to load SVGs from various sources such as local file paths, template includes, assets, or markup.
+
+The plugin provides several functions and filters to modify SVG attributes. For instance, you can change the SVG color, replace a specific color in multi-colored SVGs, add or modify the SVG title for better accessibility, and modify SVG class attributes.
+
+It also allows you to define the folder path for SVGs in the plugin config file and supports the use of multiple paths. You can use aliases like `@root` in the config file.
 
 ## Features
 

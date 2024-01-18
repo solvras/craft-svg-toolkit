@@ -1,9 +1,8 @@
 {
     "name": "solvras/craft-svg-toolkit",
-    "description": "Twig filters to change inline SVGs. ",
+    "description": "Craft plugin Twig filters to change inline SVGs.",
     "type": "craft-plugin",
     "license": "proprietary",
-    "version": "v1.0.0",
     "support": {
         "email": "support@solvr.no"
     },
