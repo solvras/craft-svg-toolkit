@@ -61,14 +61,13 @@ class Extension extends AbstractExtension
 
     /**
      * @param Asset|string $asset
-     * @param string $color
-     * @param string $replaceColor
+     * @param array $options
      * @return string
      * Svg Replace Color
      */
-    public function svgReplaceColorFilter(Asset|string $asset, string $color, string $replaceColor): string
+    public function svgReplaceColorFilter(Asset|string $asset, array $options): string
     {
-        return SvgToolkit::getInstance()->svgToolkit->svgReplaceColor($asset, $color, $replaceColor);
+        return SvgToolkit::getInstance()->svgToolkit->svgReplaceColor($asset, $options);
     }
 
     /**
