@@ -22,7 +22,7 @@
     },
     "extra": {
         "handle": "svg-toolkit",
-        "name": "svg-toolkit",
+        "name": "SVG Toolkit",
         "developer": "Solvr",
         "documentationUrl": "",
         "class": "solvras\\craftsvgtoolkit\\SvgToolkit"
